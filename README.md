@@ -33,7 +33,7 @@ To view the love proposal page, simply open the `index.html` file in a web brows
 
 ## Author
 
-[Your Name](https://github.com/shakiradesaidev)
+[Shakira](https://github.com/shakiradesaidev)
 
 ## License
 
