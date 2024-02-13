@@ -68,3 +68,41 @@ papers.forEach(paper => {
   const p = new Paper();
   p.init(paper);
 });
+document.addEventListener("DOMContentLoaded", function() {
+  // Variables to store touch position offsets
+  var offsetX = 0;
+  var offsetY = 0;
+
+  // Function to handle touch start event
+  function handleTouchStart(event) {
+    var touch = event.touches[0];
+    offsetX = touch.clientX - event.target.getBoundingClientRect().left;
+    offsetY = touch.clientY - event.target.getBoundingClientRect().top;
+  }
+
+  // Function to handle touch move event
+  function handleTouchMove(event) {
+    var touch = event.touches[0];
+    var target = event.target;
+    var newX = touch.clientX - offsetX;
+    var newY = touch.clientY - offsetY;
+    target.style.left = newX + "px";
+    target.style.top = newY + "px";
+    event.preventDefault();
+  }
+
+  // Function to handle touch end event
+  function handleTouchEnd(event) {
+    // Perform any cleanup or additional actions if needed
+  }
+
+  // Get all elements with the class "paper"
+  var papers = document.querySelectorAll('.paper');
+
+  // Add touch event listeners to each paper element
+  papers.forEach(function(paper) {
+    paper.addEventListener('touchstart', handleTouchStart);
+    paper.addEventListener('touchmove', handleTouchMove);
+    paper.addEventListener('touchend', handleTouchEnd);
+  });
+});
